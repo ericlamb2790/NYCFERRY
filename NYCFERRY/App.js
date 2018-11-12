@@ -4,8 +4,8 @@ import { Constants } from 'expo';
 import * as Animatable from 'react-native-animatable';
 var LIGHTBLUE = '#4db8e2';
 var DARKBLUE = '#01a0e1';
-var LIGHTGREEN = '#3fffa1';
-var DARKGREEN = '#00ff82'
+var LIGHTGREEN = '#3ff497';
+var DARKGREEN = '#00ef75'
 
 export default class App extends React.Component {
   constructor(props) {
