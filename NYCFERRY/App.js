@@ -4,9 +4,6 @@ import { Constants } from 'expo';
 import * as Animatable from 'react-native-animatable';
 export default class App extends React.Component {
 
-  handleViewRef = ref => this.view = ref;
-
-  bounce = () => this.view.slideInLeft(2000).then(endState => this.view.slideInRight(2000));
 
   render() {
     console.log(Dimensions.get('window').width / 2);
@@ -20,11 +17,11 @@ export default class App extends React.Component {
           />
         </View>
         <View
-                  style={{ width: '1000%' }}>
+          style={{ width: '1000%' }}>
           <Animatable.View
             ref={this.handleViewRef}
-            animation="slideInLeft" easing="linear" iterationCount="infinite" duration={2000} removeClippedSubviews={false}
-            style={{ width: '100%' }}
+            animation="slideInLeft" easing="linear" iterationCount="infinite" duration={3000} removeClippedSubviews={false}
+            style={{ marginLeft: 500 }}
           >
             <Image
               resizeMode="contain"
@@ -34,6 +31,11 @@ export default class App extends React.Component {
             <Image
               resizeMode="contain"
               style={styles.middle2}
+              source={require('./assets/icon_main.png')}
+            />
+            <Image
+              resizeMode="contain"
+              style={styles.middle3}
               source={require('./assets/icon_main.png')}
             />
           </Animatable.View>
@@ -76,6 +78,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     marginLeft: 100,
+    marginBottom: 1,
+    height: 200,
+  },
+  middle3: {
+    position: 'absolute',
+    width: '100%',
+    marginLeft: 50,
     marginBottom: 1,
     height: 200,
   },
