@@ -33,11 +33,17 @@ export default class App extends React.Component {
               style={styles.middle2}
               source={require('./assets/icon_main.png')}
             />
-            <Image
+             <Image
               resizeMode="contain"
               style={styles.middle3}
               source={require('./assets/icon_main.png')}
             />
+            <Image
+              resizeMode="contain"
+              style={styles.middle4}
+              source={require('./assets/icon_main.png')}
+            />
+            
           </Animatable.View>
         </View>
         <View
@@ -70,21 +76,28 @@ const styles = StyleSheet.create({
   middle: {
     position: 'absolute',
     width: '100%',
-    marginLeft: (Dimensions.get('window').width / 2) * -1,
+    marginLeft: -400,
     marginBottom: 1,
     height: 200,
   },
   middle2: {
     position: 'absolute',
     width: '100%',
-    marginLeft: 100,
+    marginLeft: -200,
     marginBottom: 1,
     height: 200,
   },
   middle3: {
     position: 'absolute',
     width: '100%',
-    marginLeft: 50,
+    marginLeft: 0,
+    marginBottom: 1,
+    height: 200,
+  },
+  middle4: {
+    position: 'absolute',
+    width: '100%',
+    marginLeft: 200,
     marginBottom: 1,
     height: 200,
   },
