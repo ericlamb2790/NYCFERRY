@@ -20,7 +20,7 @@ export default class App extends React.Component {
           style={{ width: '1000%' }}>
           <Animatable.View
             ref={this.handleViewRef}
-            animation="slideInLeft" easing="linear" iterationCount="infinite" duration={3000} removeClippedSubviews={false}
+            animation="slideInLeft" easing="linear" iterationCount="infinite" duration={4000} removeClippedSubviews={false}
             style={{ marginLeft: 500 }}
           >
             <Image
@@ -77,29 +77,29 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     marginLeft: -400,
-    marginBottom: 1,
-    height: 200,
+    marginTop: -15,
+    height: 150,
   },
   middle2: {
     position: 'absolute',
     width: '100%',
     marginLeft: -200,
-    marginBottom: 1,
-    height: 200,
+    marginTop: -15,
+    height: 150,
   },
   middle3: {
     position: 'absolute',
     width: '100%',
     marginLeft: 0,
-    marginBottom: 1,
-    height: 200,
+    marginTop: -15,
+    height: 150,
   },
   middle4: {
     position: 'absolute',
     width: '100%',
     marginLeft: 200,
-    marginBottom: 1,
-    height: 200,
+    marginTop: -15,
+    height: 150,
   },
   footerView: {
     position: 'absolute',
