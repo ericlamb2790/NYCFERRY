@@ -13,6 +13,14 @@ export default class App extends React.Component {
             source={require('./assets/header.png')}
           />
         </View>
+        <View
+        style={styles.footerView}>
+          <Image
+            resizeMode="contain"
+            style={styles.footer}
+            source={require('./assets/footer.png')}
+          />
+        </View>
       </View>
     );
   }
@@ -30,6 +38,16 @@ const styles = StyleSheet.create({
     width: '100%',
     marginLeft: (Dimensions.get('window').width / 2)*-1,
     marginTop: ((Dimensions.get('window').height / 1.97)*-1)+Constants.statusBarHeight,
+    height: 200,
+  },
+  footerView:{
+    marginTop:100,
+  },
+  footer:{
+    position: 'absolute',
+    width: '100%',
+    marginLeft: (Dimensions.get('window').width / 2)*-1,
+    marginBottom: 1,
     height: 200,
   }
 });
