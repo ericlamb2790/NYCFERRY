@@ -41,13 +41,12 @@ const styles = StyleSheet.create({
     height: 200,
   },
   footerView:{
-    marginTop:100,
-  },
-  footer:{
     position: 'absolute',
     width: '100%',
-    marginLeft: (Dimensions.get('window').width / 2)*-1,
-    marginBottom: 1,
-    height: 200,
+    bottom: 0,
+  },
+  footer:{
+    width: '100%',
+    height: 115,
   }
 });
