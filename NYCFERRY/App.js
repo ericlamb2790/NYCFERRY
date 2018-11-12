@@ -1,11 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,Image } from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <View>
+          <Image
+            resizeMode="contain"
+            style={styles.header}
+            source={require('./assets/header.png')}
+          />
+        </View>
       </View>
     );
   }
@@ -18,4 +24,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header:{
+    position: 'absolute',
+    width: '100%',
+    marginTop: -1,
+    marginLeft:-100,
+    height: 100,
+    flexDirection: 'row',
+  }
 });
