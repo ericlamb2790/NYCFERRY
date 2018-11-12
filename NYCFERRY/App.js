@@ -3,6 +3,11 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Constants } from 'expo';
 import * as Animatable from 'react-native-animatable';
 export default class App extends React.Component {
+
+  handleViewRef = ref => this.view = ref;
+
+  bounce = () => this.view.slideInLeft(2000).then(endState => this.view.slideInRight(2000));
+
   render() {
     console.log(Dimensions.get('window').width / 2);
     return (
@@ -14,15 +19,25 @@ export default class App extends React.Component {
             source={require('./assets/header.png')}
           />
         </View>
-        <Animatable.View
-          animation="slideInLeft" easing="linear" iterationCount="infinite" duration={2000}
-        >
-          <Image
-            resizeMode="contain"
-            style={styles.middle}
-            source={require('./assets/icon_main_red.png')}
-          />
-        </Animatable.View>
+        <View
+                  style={{ width: '1000%' }}>
+          <Animatable.View
+            ref={this.handleViewRef}
+            animation="slideInLeft" easing="linear" iterationCount="infinite" duration={2000} removeClippedSubviews={false}
+            style={{ width: '100%' }}
+          >
+            <Image
+              resizeMode="contain"
+              style={styles.middle}
+              source={require('./assets/icon_main.png')}
+            />
+            <Image
+              resizeMode="contain"
+              style={styles.middle2}
+              source={require('./assets/icon_main.png')}
+            />
+          </Animatable.View>
+        </View>
         <View
           style={styles.footerView}>
           <Image
@@ -39,7 +54,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#53bbe3',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -50,10 +65,17 @@ const styles = StyleSheet.create({
     marginTop: ((Dimensions.get('window').height / 1.97) * -1) + Constants.statusBarHeight,
     height: 200,
   },
-  middle:{
+  middle: {
     position: 'absolute',
     width: '100%',
-    marginLeft: (Dimensions.get('window').width / 2)*-1,
+    marginLeft: (Dimensions.get('window').width / 2) * -1,
+    marginBottom: 1,
+    height: 200,
+  },
+  middle2: {
+    position: 'absolute',
+    width: '100%',
+    marginLeft: 100,
     marginBottom: 1,
     height: 200,
   },
