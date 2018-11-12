@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
-
+import { StyleSheet, Text, View,Image,Dimensions } from 'react-native';
+import {Constants} from 'expo';
 export default class App extends React.Component {
   render() {
+    console.log(Dimensions.get('window').width / 2);
     return (
       <View style={styles.container}>
         <View>
@@ -27,9 +28,8 @@ const styles = StyleSheet.create({
   header:{
     position: 'absolute',
     width: '100%',
-    marginTop: -1,
-    marginLeft:-100,
-    height: 100,
-    flexDirection: 'row',
+    marginLeft: (Dimensions.get('window').width / 2)*-1,
+    marginTop: ((Dimensions.get('window').height / 1.97)*-1)+Constants.statusBarHeight,
+    height: 200,
   }
 });
