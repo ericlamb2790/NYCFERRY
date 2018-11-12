@@ -1,60 +1,91 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import { Constants } from 'expo';
 import * as Animatable from 'react-native-animatable';
-export default class App extends React.Component {
+var LIGHTBLUE = '#4db8e2';
+var DARKBLUE = '#01a0e1';
+var LIGHTGREEN = '#3fffa1';
+var DARKGREEN = '#00ff82'
 
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: false,
+    }
+  }
+
+  onPress = () => {
+    this.setState({
+      current: !this.state.current,
+    })
+    console.log(this.state.current);
+    this.forceUpdate();
+  }
 
   render() {
     console.log(Dimensions.get('window').width / 2);
     return (
-      <View style={styles.container}>
-        <View>
-          <Image
-            resizeMode="contain"
-            style={styles.header}
-            source={require('./assets/header.png')}
-          />
-        </View>
-        <View
-          style={{ width: '1000%' }}>
-          <Animatable.View
-            ref={this.handleViewRef}
-            animation="slideInLeft" easing="linear" iterationCount="infinite" duration={4000} removeClippedSubviews={false}
-            style={{ marginLeft: 500 }}
-          >
+      <TouchableWithoutFeedback onPress={this.onPress}>
+        <View style={{
+           flex: 1,
+           backgroundColor: this.state.current?LIGHTGREEN:LIGHTBLUE,
+           alignItems: 'center',
+           justifyContent: 'center',
+        }}>
+          <View>
             <Image
               resizeMode="contain"
-              style={styles.middle}
-              source={require('./assets/icon_main.png')}
+              style={styles.header}
+              source={require('./assets/header.png')}
             />
+          </View>
+          <View
+            style={{ width: '1000%' }}>
+            <Image style={{
+              backgroundColor: this.state.current?DARKGREEN:DARKBLUE,
+               position: "absolute",
+              marginTop: 60,
+              height: 500, width: "100%"
+            }} />
+            <Animatable.View
+              ref={this.handleViewRef}
+              animation="slideInLeft" easing="linear" iterationCount="infinite" duration={4000} removeClippedSubviews={false}
+              style={{ marginLeft: 500 }}
+            >
+              <Image
+                resizeMode="contain"
+                style={styles.middle}
+                source={require('./assets/icon_main.png')}
+              />
+              <Image
+                resizeMode="contain"
+                style={styles.middle2}
+                source={require('./assets/icon_main.png')}
+              />
+              <Image
+                resizeMode="contain"
+                style={styles.middle3}
+                source={require('./assets/icon_main.png')}
+              />
+              <Image
+                resizeMode="contain"
+                style={styles.middle4}
+                source={require('./assets/icon_main.png')}
+              />
+
+            </Animatable.View>
+          </View>
+          <View
+            style={styles.footerView}>
             <Image
               resizeMode="contain"
-              style={styles.middle2}
-              source={require('./assets/icon_main.png')}
+              style={styles.footer}
+              source={require('./assets/footer.png')}
             />
-             <Image
-              resizeMode="contain"
-              style={styles.middle3}
-              source={require('./assets/icon_main.png')}
-            />
-            <Image
-              resizeMode="contain"
-              style={styles.middle4}
-              source={require('./assets/icon_main.png')}
-            />
-            
-          </Animatable.View>
+          </View>
         </View>
-        <View
-          style={styles.footerView}>
-          <Image
-            resizeMode="contain"
-            style={styles.footer}
-            source={require('./assets/footer.png')}
-          />
-        </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -62,7 +93,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#53bbe3',
+    backgroundColor: LIGHTGREEN,
     alignItems: 'center',
     justifyContent: 'center',
   },
