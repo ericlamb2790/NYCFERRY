@@ -21,7 +21,9 @@ let getTime = (milli) => {
   return pad(hours,2) + ":" + pad(minutes,2);
 }
 var today = new Date();
-var CURRDATE =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
+var str = today.getFullYear()+"";
+str = str.substring(2,4);
+var CURRDATE =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + str;
 var CURRENTTIME = getTime(today.getTime()-(300*60*1000)+(30*60*1000));
 export default class App extends React.Component {
   constructor(props) {
@@ -37,6 +39,8 @@ export default class App extends React.Component {
     })
     console.log(this.state.current);
     this.forceUpdate();
+    var str = today.getFullYear();
+    console.log(str.substring(2, end));
   }
   
 
