@@ -15,7 +15,7 @@ let getTime = (milli) => {
   let time = new Date(milli);
   let hours = time.getUTCHours();
   let minutes = time.getUTCMinutes();
-  return hours + ":" + pad(minutes,2);
+  return pad(hours,2) + ":" + pad(minutes,2);
 }
 var today = new Date();
 var CURRDATE =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
@@ -135,7 +135,7 @@ export default class App extends React.Component {
               <Text style={{
                 fontSize: 24, fontWeight: 'bold', color: '#fdfffd', position: "absolute",
                 marginTop: 13,
-                marginLeft: ((Dimensions.get('window').width / 2) - 90),
+                marginLeft: ((Dimensions.get('window').width / 2) - 110),
                 height: 50, width: "100%"
               }}>
                 {CURRDATE} at {CURRENTTIME}
