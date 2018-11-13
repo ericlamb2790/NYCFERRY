@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback,StatusBar } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback, StatusBar } from 'react-native';
 import { Constants } from 'expo';
 import * as Animatable from 'react-native-animatable';
 var LIGHTBLUE = '#4db8e2';
@@ -21,6 +21,7 @@ export default class App extends React.Component {
     })
     console.log(this.state.current);
     this.forceUpdate();
+
   }
 
   render() {
@@ -49,18 +50,28 @@ export default class App extends React.Component {
               marginTop: -173,
               height: 2, width: "100%"
             }} />
-             <Image style={{
+            <Image style={{
               backgroundColor: '#FFFFFF',
               position: "absolute",
               marginTop: -388,
               height: 28, width: "100%"
             }} />
-            <Image style={{
-              backgroundColor: this.state.current ? DARKGREEN : DARKBLUE,
-              position: "absolute",
-              marginTop: 60,
-              height: 500, width: "100%"
-            }} />
+            <View style={{ width: '100%' }} >
+              <Image style={{
+                backgroundColor: this.state.current ? DARKGREEN : DARKBLUE,
+                position: "absolute",
+                marginTop: 60,
+                height: 500, width: "100%"
+              }} />
+              <Text style={{
+                fontSize: 32, fontWeight: 'bold', color: '#fdfffd', position: "absolute",
+                marginTop: 37,
+                marginLeft: ((Dimensions.get('window').width / 2) - 110),
+                height: 50, width: "100%"
+              }}>
+                ONE-WAY PASS
+          </Text>
+            </View>
 
             <Animatable.View
               ref={this.handleViewRef}
@@ -128,28 +139,28 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     marginLeft: -400,
-    marginTop: -15,
+    marginTop: -33,
     height: 150,
   },
   middle2: {
     position: 'absolute',
     width: '100%',
     marginLeft: -200,
-    marginTop: -15,
+    marginTop: -33,
     height: 150,
   },
   middle3: {
     position: 'absolute',
     width: '100%',
     marginLeft: 0,
-    marginTop: -15,
+    marginTop: -33,
     height: 150,
   },
   middle4: {
     position: 'absolute',
     width: '100%',
     marginLeft: 200,
-    marginTop: -15,
+    marginTop: -33,
     height: 150,
   },
   footerView: {
