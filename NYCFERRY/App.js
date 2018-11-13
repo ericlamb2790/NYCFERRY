@@ -6,6 +6,9 @@ var LIGHTBLUE = '#4db8e2';
 var DARKBLUE = '#01a0e1';
 var LIGHTGREEN = '#3ff497';
 var DARKGREEN = '#00ef75';
+var TEXTGREEN = '#007232';
+var TEXTBLUE = '#064961'
+
 function pad(num, size) {
   var s = num+"";
   while (s.length < size) s = "0" + s;
@@ -135,6 +138,23 @@ export default class App extends React.Component {
               }}>
                 {CURRDATE} at {CURRENTTIME}
           </Text>
+
+          <Text style={{
+                fontSize: 15, fontWeight: 'bold', 
+                color: this.state.current ? TEXTGREEN : TEXTBLUE,                
+                position: "absolute",
+                marginTop: -50,
+                marginLeft: ((Dimensions.get('window').width / 2)+45),
+                height: 50, width: "100%"
+              }}>
+                SHOW {'\n '}
+                  CODE
+          </Text>
+          <Image resizeMode="contain"
+                style={styles.qr}
+                source={require('./assets/qr.png')}>
+            </Image>
+
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -183,6 +203,13 @@ const styles = StyleSheet.create({
     marginLeft: 200,
     marginTop: -13,
     height: 150,
+  },
+  qr: {
+    position: 'absolute',
+    width: '100%',
+    right:-150,
+    marginTop: -110,
+    height: 100,
   },
   footerView: {
     position: 'absolute',
