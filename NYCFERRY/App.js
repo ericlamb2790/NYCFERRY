@@ -5,12 +5,17 @@ import * as Animatable from 'react-native-animatable';
 var LIGHTBLUE = '#4db8e2';
 var DARKBLUE = '#01a0e1';
 var LIGHTGREEN = '#3ff497';
-var DARKGREEN = '#00ef75'
+var DARKGREEN = '#00ef75';
+function pad(num, size) {
+  var s = num+"";
+  while (s.length < size) s = "0" + s;
+  return s;
+}
 let getTime = (milli) => {
   let time = new Date(milli);
   let hours = time.getUTCHours();
   let minutes = time.getUTCMinutes();
-  return hours + ":" + minutes;
+  return hours + ":" + pad(minutes,2);
 }
 var today = new Date();
 var CURRDATE =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
@@ -130,7 +135,7 @@ export default class App extends React.Component {
               <Text style={{
                 fontSize: 24, fontWeight: 'bold', color: '#fdfffd', position: "absolute",
                 marginTop: 13,
-                marginLeft: ((Dimensions.get('window').width / 2) - 75),
+                marginLeft: ((Dimensions.get('window').width / 2) - 90),
                 height: 50, width: "100%"
               }}>
                 {CURRDATE} at {CURRENTTIME}
