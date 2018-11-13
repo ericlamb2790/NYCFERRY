@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback,StatusBar } from 'react-native';
 import { Constants } from 'expo';
 import * as Animatable from 'react-native-animatable';
 var LIGHTBLUE = '#4db8e2';
@@ -28,10 +28,10 @@ export default class App extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <View style={{
-           flex: 1,
-           backgroundColor: this.state.current?LIGHTGREEN:LIGHTBLUE,
-           alignItems: 'center',
-           justifyContent: 'center',
+          flex: 1,
+          backgroundColor: this.state.current ? LIGHTGREEN : LIGHTBLUE,
+          alignItems: 'center',
+          justifyContent: 'center',
         }}>
           <View>
             <Image
@@ -39,15 +39,30 @@ export default class App extends React.Component {
               style={styles.header}
               source={require('./assets/header.png')}
             />
+
           </View>
           <View
             style={{ width: '1000%' }}>
             <Image style={{
-              backgroundColor: this.state.current?DARKGREEN:DARKBLUE,
-               position: "absolute",
+              backgroundColor: '#FFFFFF',
+              position: "absolute",
+              marginTop: -173,
+              height: 2, width: "100%"
+            }} />
+             <Image style={{
+              backgroundColor: '#FFFFFF',
+              position: "absolute",
+              marginTop: -388,
+              height: 28, width: "100%"
+            }} />
+            <Image style={{
+              backgroundColor: this.state.current ? DARKGREEN : DARKBLUE,
+              position: "absolute",
               marginTop: 60,
               height: 500, width: "100%"
             }} />
+
+            <Text>No image</Text>
             <Animatable.View
               ref={this.handleViewRef}
               animation="slideInLeft" easing="linear" iterationCount="infinite" duration={4000} removeClippedSubviews={false}
@@ -78,6 +93,12 @@ export default class App extends React.Component {
           </View>
           <View
             style={styles.footerView}>
+            <Image style={{
+              backgroundColor: '#FFFFFF',
+              position: "absolute",
+              marginTop: -2,
+              height: 10, width: "100%"
+            }} />
             <Image
               resizeMode="contain"
               style={styles.footer}
