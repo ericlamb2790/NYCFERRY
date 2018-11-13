@@ -34,11 +34,6 @@ export default class App extends React.Component {
     })
     console.log(this.state.current);
     this.forceUpdate();
-    var today = new Date();
-    date =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
-    console.log(date);
-    var offsetTime = today.getTime()-(300*60*1000)+(30*60*1000);
-    console.log(getTime(offsetTime));
   }
   
 
