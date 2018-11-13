@@ -73,7 +73,6 @@ export default class App extends React.Component {
             }} />
 
 
-            <Text>No image</Text>
             <Animatable.View
               ref={this.handleViewRef}
               animation="slideInLeft" easing="linear" iterationCount="infinite" duration={4000} removeClippedSubviews={false}
