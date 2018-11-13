@@ -39,8 +39,6 @@ export default class App extends React.Component {
     })
     console.log(this.state.current);
     this.forceUpdate();
-    var str = today.getFullYear();
-    console.log(str.substring(2, end));
   }
   
 
