@@ -23,7 +23,7 @@ let getTime = (milli) => {
 var today = new Date();
 var str = today.getFullYear()+"";
 str = str.substring(2,4);
-var CURRDATE =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + str;
+var CURRDATE =  pad(parseInt(today.getMonth() + 1),2) + "/" + pad(today.getDate(),2) + "/" + str;
 var CURRENTTIME = getTime(today.getTime()-(300*60*1000)+(30*60*1000));
 export default class App extends React.Component {
   constructor(props) {
@@ -39,6 +39,7 @@ export default class App extends React.Component {
     })
     console.log(this.state.current);
     this.forceUpdate();
+
   }
   
 
@@ -135,7 +136,7 @@ export default class App extends React.Component {
               <Text style={{
                 fontSize: 24, fontWeight: 'bold', color: '#fdfffd', position: "absolute",
                 marginTop: 13,
-                marginLeft: ((Dimensions.get('window').width / 2) - 110),
+                marginLeft: ((Dimensions.get('window').width / 2) - 100),
                 height: 50, width: "100%"
               }}>
                 {CURRDATE} at {CURRENTTIME}
