@@ -6,7 +6,15 @@ var LIGHTBLUE = '#4db8e2';
 var DARKBLUE = '#01a0e1';
 var LIGHTGREEN = '#3ff497';
 var DARKGREEN = '#00ef75'
-
+let getTime = (milli) => {
+  let time = new Date(milli);
+  let hours = time.getUTCHours();
+  let minutes = time.getUTCMinutes();
+  return hours + ":" + minutes;
+}
+var today = new Date();
+var CURRDATE =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
+var CURRENTTIME = getTime(today.getTime()-(300*60*1000)+(30*60*1000));
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,11 +29,15 @@ export default class App extends React.Component {
     })
     console.log(this.state.current);
     this.forceUpdate();
-
+    var today = new Date();
+    date =  parseInt(today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
+    console.log(date);
+    var offsetTime = today.getTime()-(300*60*1000)+(30*60*1000);
+    console.log(getTime(offsetTime));
   }
+  
 
   render() {
-    console.log(Dimensions.get('window').width / 2);
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <View style={{
@@ -121,7 +133,7 @@ export default class App extends React.Component {
                 marginLeft: ((Dimensions.get('window').width / 2) - 75),
                 height: 50, width: "100%"
               }}>
-                ONE-WAY PASS
+                {CURRDATE} at {CURRENTTIME}
           </Text>
           </View>
         </View>
@@ -182,3 +194,4 @@ const styles = StyleSheet.create({
     height: 115,
   }
 });
+
