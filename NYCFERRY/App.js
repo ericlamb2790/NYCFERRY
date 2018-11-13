@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback, StatusBar } from 'react-native';
-import { Constants } from 'expo';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback, Platform } from 'react-native';
+import { Constants,Font } from 'expo';
 import * as Animatable from 'react-native-animatable';
 var LIGHTBLUE = '#4db8e2';
 var DARKBLUE = '#01a0e1';
@@ -30,6 +30,26 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       current: false,
+      fontLoaded: false,
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      await Font.loadAsync({
+      'Helvetica-Black': require('./assets/fonts/Helvetica-Black.otf'),
+      'HelveticaNeue-Heavy': require('./assets/fonts/HelveticaNeue-Heavy.otf'),
+      'Loew-Heavy': require('./assets/fonts/Loew-Heavy.otf'),
+      'Montserrat': require('./assets/fonts/Montserrat.otf'),
+      'MontserratBold': require('./assets/fonts/MontserratBold.otf'),
+      'MontserratLight': require('./assets/fonts/MontserratLight.otf'),
+      'MontserratBoldItalic': require('./assets/fonts/MontserratBoldItalic.otf'),
+      'MontserratItalic': require('./assets/fonts/MontserratItalic.otf'),
+      });
+      this.setState({ fontLoaded: true });
+      console.log('fonts are loaded');
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -44,6 +64,9 @@ export default class App extends React.Component {
   
 
   render() {
+    if (Platform.OS === 'ios') {
+    }
+    else
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <View style={{
@@ -67,28 +90,29 @@ export default class App extends React.Component {
                 marginTop: 60,
                 height: 500, width: "100%"
               }} />
-              <Text style={{
-                fontSize: 32, fontWeight: 'bold', color: '#fdfffd', position: "absolute",
-                marginTop: 37,
-                marginLeft: ((Dimensions.get('window').width / 2) - 110),
-                height: 50, width: "100%"
-              }}>
-                ONE-WAY PASS
-          </Text>
+              {
+                this.state.fontLoaded ?(
+                  <Text style={styles.pass}>
+                    ONE-WAY PASS
+              </Text>
+                ) : null
+              }
+              
+              
             </View>
           <View
             style={{ width: '1000%' }}>
             <Image style={{
               backgroundColor: '#FFFFFF',
               position: "absolute",
-              marginTop: -173,
+              marginTop: -182,
               height: 2, width: "100%"
             }} />
             <Image style={{
-              backgroundColor: '#FFFFFF',
+              backgroundColor: '#F2F2F2',
               position: "absolute",
-              marginTop: -388,
-              height: 28, width: "100%"
+              marginTop: -415,
+              height: 63, width: "100%"
             }} />
 
 
@@ -133,14 +157,18 @@ export default class App extends React.Component {
               style={styles.footer}
               source={require('./assets/footer.png')}
             />
+             {
+                this.state.fontLoaded ?(
               <Text style={{
-                fontSize: 24, fontWeight: 'bold', color: '#fdfffd', position: "absolute",
+                fontSize: 21,fontFamily:'Loew-Heavy', color: '#fdfffd', position: "absolute",
                 marginTop: 13,
-                marginLeft: ((Dimensions.get('window').width / 2) - 100),
+                marginLeft: ((Dimensions.get('window').width / 2) - 85),
                 height: 50, width: "100%"
               }}>
                 {CURRDATE} at {CURRENTTIME}
           </Text>
+                ):null
+             }
 
           <Text style={{
                 fontSize: 15, fontWeight: 'bold', 
@@ -172,11 +200,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  pass:{
+    fontSize: 30,
+    fontFamily: "Loew-Heavy", color: '#fdfffd', position: "absolute",
+    marginTop: 37,
+    letterSpacing:-1,
+    marginLeft: ((Dimensions.get('window').width / 2) - 123),
+    
+  },
   header: {
     position: 'absolute',
     width: '100%',
     marginLeft: (Dimensions.get('window').width / 2) * -1,
-    marginTop: ((Dimensions.get('window').height / 1.97) * -1) + Constants.statusBarHeight,
+    marginTop: ((Dimensions.get('window').height / 2) * -1),
     height: 200,
   },
   middle: {

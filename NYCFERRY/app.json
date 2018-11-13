@@ -20,12 +20,15 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "packagerOpts": {
+      "assetExts": ["ttf","otf"]
+    },
     "android": {
       "package": "com.NYCFERRY.NYCFERRY.NYCFERRY",
       "versionCode": 75
     },
     "ios": {
-      "bundleIdentifier": "com.NYCFERRY.NYCFERRY",
+      "bundleIdentifier": "com.nycferry.nycferry",
       "supportsTablet": true
     }
   }
