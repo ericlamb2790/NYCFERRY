@@ -115,6 +115,14 @@ export default class App extends React.Component {
               style={styles.footer}
               source={require('./assets/footer.png')}
             />
+              <Text style={{
+                fontSize: 24, fontWeight: 'bold', color: '#fdfffd', position: "absolute",
+                marginTop: 13,
+                marginLeft: ((Dimensions.get('window').width / 2) - 75),
+                height: 50, width: "100%"
+              }}>
+                ONE-WAY PASS
+          </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
